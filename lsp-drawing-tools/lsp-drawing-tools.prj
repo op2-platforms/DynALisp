@@ -1,0 +1,16 @@
+;;; VLisp project file [V2.0] lsp-drawing-tools saved to:[c:\Users\SMartineau\OneDrive\Documents\GitHub\Op2\DynALisp\lsp-drawing-tools] at:[2022-12-13]
+(VLISP-PROJECT-LIST 
+    :NAME
+    lsp-drawing-tools
+    :OWN-LIST
+    ("change-objscale" "quick-scale" "quick-zoom" "select-attribut" "select-block" "select-color" "select-leadertext" "select-linetype" "select-pattname" "draw-hatch")
+    :FAS-DIRECTORY
+    nil
+    :TMP-DIRECTORY
+    nil
+    :PROJECT-KEYS
+    (:BUILD (:standard))
+    :CONTEXT-ID
+    :AUTOLISP
+)
+;;; EOF
