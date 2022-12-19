@@ -12,7 +12,7 @@
     (load app_file)
 
     ;custom command to load or reload the application file:
-    (defun c:DYNALISP-LOAD () 
+    (defun c:LOAD-DYNALISP () 
         (load app_file)
         (prompt (strcat "\n...[" app_file "]"))
         (princ)
