@@ -2,7 +2,7 @@
 ; Application       : DynALisp
 ; Project           : lsp-drawing-tools
 ; Description       : change annotation scale with a safety switch to prevent autoscaling 
-;                     and regen command to update line scale
+;                     and regen command to update line type scale
 ; File type         : standalone function
 ; 
 ; is part of the "DynALisp" open source repository [https://github.com/op2-platforms/DynALisp.git]

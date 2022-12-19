@@ -8,7 +8,7 @@
 ;
 ; *******************************************************************************************************************
 
-(defun c:sl-leadertext (/ obj leadc ss sslen) 
+(defun c:sl-text (/ obj leadc ss sslen) 
     ; obj = entsel input object
     ; leadc = leader content
     ; ss = selection set

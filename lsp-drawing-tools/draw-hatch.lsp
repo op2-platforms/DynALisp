@@ -9,7 +9,8 @@
 ; *************************************************************************************************
 ; Available layer keys: 
 ; 
-; required AIA or AIA base layer keys:
+;
+; // required AIA or AIA base layer keys:
 ; FINE                                  = 0.18mm line
 ; THIN                                  = 0.25mm line
 ; MED                                   = 0.35mm line
@@ -17,8 +18,15 @@
 ; HATCH                                 = Hatch Pattern
 ; XLINE                                 = Non-plotting line
 ; HIDDEN                                = Hidden line
+; ANNMATCH                              = Match line
+; ZONE                                  = Zone hatches
+; TOPO                                  = Topography hatches (Architectural)
+; SITE                                  = Site hatches (Civil)
+; CEILGRID                              = Ceiling grids
+; WALLFIRE                              = Wall fire patterning
 ;
-; required NCS 5.0 or NCS base layer keys:
+;
+; // required NCS 5.0 or NCS base layer keys:
 ; G-DS-DETL-LINE-01-EXTRA_FINE          = 0.13mm line
 ; G-DS-DETL-LINE-02-FINE                = 0.18mm line
 ; G-DS-DETL-LINE-03-THIN                = 0.25mm line
@@ -30,279 +38,343 @@
 ; G-DS-DETL-LINE-09-XXXX_WIDE           = 2.00mm line
 ; G-DS-DETL-LINE-10-HEAVY               = 0.60mm line
 ; G-DS-DETL-LINE-11-NORMAL              = 0.40mm line
-; G-DS-ANNO-STD-BACKGROUND_SCREEN       = Hidden line (non-plotting)
-
+;
+; G-DS-ANNO-STD-BACKGROUND_SCREEN       = Solid background fill (light grey)
+; G-DS-ANNO-STD-HATCH_PATTERNS          = Hatch Pattern
+; G-DS-ANNO-STD-HIDDEN_LINES            = Hidden line 
+;
+; G-DS-ELEV-CUT_PLANE-ABOVE             = Dashed line
+; G-DS-ELEV-CUT_PLANE-BELOW             = Hidden line
+; G-DS-ELEV-CUT_PLANE-HIGH              = Wide line
+; G-DS-ELEV-CUT_PLANE-LOW               = Thin line
+;
+;
 ; *************************************************************************************************
-(defun c:ha-cellulose (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "NET3"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "XLINE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-sprayfoam (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "HONEY"
-          hsc-i "0.5"
-          hsc-m "0.5"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "XLINE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-plywood (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "WOOD_GLU-LAMBEAM"
-          hsc-i "0.25"
-          hsc-m "6.35"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-woodplank (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "WOOD_2"
-          hsc-i "0.1875"
-          hsc-m "7.8"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-woodframe (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "WOOD_1"
-          hsc-i "0.75"
-          hsc-m "19.05"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-particleboard (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "GENERAL_TEXTURE"
-          hsc-i "3.0"
-          hsc-m "76.2"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-earth (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "EARTH"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "45"
-          hkey  "HATCH"
-          lkey  "XLINE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-conc (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "CONCRETE_c"
-          hsc-i "1.0"
-          hsc-m "2.54"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "XWIDE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-sand (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "GENERAL_STIPPLE"
-          hsc-i "1.0"
-          hsc-m "2.54"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "FINE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-grout (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "GENERAL_STIPPLE"
-          hsc-i "2.0"
-          hsc-m "50.8"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "XLINE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-gypsum (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "GENERAL_TEXTURE"
-          hsc-i "0.5"
-          hsc-m "12.7"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-plaster (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "GENERAL_TEXTURE"
-          hsc-i "3.0"
-          hsc-m "76.2"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "THIN"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-stucco (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "GENERAL_STIPPLE"
-          hsc-i "3.0"
-          hsc-m "76.2"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "THIN"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-asphalt (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "SITEWORK_ASPHALT"
-          hsc-i "24.0"
-          hsc-m "609.6"
-          hang  "90"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-mortar (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "GENERAL_STIPPLE"
-          hsc-i "1.0"
-          hsc-m "2.54"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "XLINE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-steel (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "ANSI32"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "0.0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-insul (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "ANSI37"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "45"
-          hkey  "HATCH"
-          lkey  "FINE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-brick (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "ANSI31"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-stone (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "ANSI33"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "WIDE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-cmu (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "ANSI37"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "WIDE"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-hardboard (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "ANSI31"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "0"
-          hkey  "HATCH"
-          lkey  "MED"
-          isan  1
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
 
-(defun c:ha-gravel (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "SITEWORK_GRAVEL"
-          hsc-i "3.0"
-          hsc-m "76.2"
-          hang  "22.5"
-          hkey  "HATCH"
-          lkey  "FINE"
-          isan  0
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-chrushedstone (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "SITEWORK_GRAVEL"
-          hsc-i "6.0"
-          hsc-m "152.4"
-          hang  "22.5"
-          hkey  "HATCH"
-          lkey  "FINE"
-          isan  0
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
-(defun c:ha-screen (/ hname hsc-i hsc-m hang hkey lkey isan) 
-    (setq hname "SOLID"
-          hsc-i "1.0"
-          hsc-m "1.0"
-          hang  "0"
-          hkey  "G-DS-ANNO-STD-BACKGROUND_SCREEN"
-          lkey  "XLINE"
-          isan  0
-    )
-    (draw-hatch hname hsc-i hsc-m hang hkey lkey isan)
-)
 
-(defun draw-hatch (hname hsc-i hsc-m hang hkey lkey isan / hsc) 
+
+;#region detail hatches
+(defun c:ha-cellulose (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "NET3"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "XLINE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-sprayfoam (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "HONEY"
+          scale-i "0.5"
+          scale-m "0.5"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "XLINE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-plywood (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "WOOD_GLU-LAMBEAM"
+          scale-i "0.25"
+          scale-m "6.35"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-woodplank (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "WOOD_2"
+          scale-i "0.1875"
+          scale-m "7.8"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-woodframe (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "WOOD_1"
+          scale-i "0.75"
+          scale-m "19.05"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-particleboard (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "GENERAL_TEXTURE"
+          scale-i "3.0"
+          scale-m "76.2"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-earth (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "EARTH"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "45"
+          hkey    "HATCH"
+          lkey    "XLINE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-concrete (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "CONCRETE_c"
+          scale-i "1.0"
+          scale-m "2.54"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "XWIDE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-sand (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "GENERAL_STIPPLE"
+          scale-i "1.0"
+          scale-m "2.54"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "FINE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-grout (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "GENERAL_STIPPLE"
+          scale-i "2.0"
+          scale-m "50.8"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "XLINE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-gypsum (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "GENERAL_TEXTURE"
+          scale-i "0.5"
+          scale-m "12.7"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-plaster (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "GENERAL_TEXTURE"
+          scale-i "3.0"
+          scale-m "76.2"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "THIN"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-stucco (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "GENERAL_STIPPLE"
+          scale-i "3.0"
+          scale-m "76.2"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "THIN"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-asphalt (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "SITEWORK_ASPHALT"
+          scale-i "24.0"
+          scale-m "609.6"
+          angl    "90"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-mortar (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "GENERAL_STIPPLE"
+          scale-i "1.0"
+          scale-m "2.54"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "XLINE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-steel (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI32"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "0.0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-insul (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI37"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "45"
+          hkey    "HATCH"
+          lkey    "FINE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-brick (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI31"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-stone (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI33"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "WIDE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-cmu (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI37"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "WIDE"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-hardboard (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI31"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "0"
+          hkey    "HATCH"
+          lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-gravel (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "SITEWORK_GRAVEL"
+          scale-i "3.0"
+          scale-m "76.2"
+          angl    "22.5"
+          hkey    "HATCH"
+          lkey    "FINE"
+          isan    0
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-chrushedstone (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "SITEWORK_GRAVEL"
+          scale-i "6.0"
+          scale-m "152.4"
+          angl    "22.5"
+          hkey    "HATCH"
+          lkey    "FINE"
+          isan    0
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-screen (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "SOLID"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "0"
+          hkey    "G-DS-ANNO-STD-BACKGROUND_SCREEN"
+          lkey    "XLINE"
+          isan    0
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+;#endregion
+
+
+
+
+(defun draw-hatch (hname scale-i scale-m angl hkey lkey isan / hsc) 
     (vl-load-com)
 
-    (setq hsc (if (= 1 (getvar "measurement")) hsc-m hsc-i))
+    (setq hsc (if (= 1 (getvar "measurement")) scale-m scale-i))
 
     ;draw a polyline:
     (princ "\nDraw closed polyline: ")
@@ -325,7 +397,7 @@
                          "p"
                          hname
                          hsc
-                         hang
+                         angl
                          "a"
                          "a"
                          "y"
