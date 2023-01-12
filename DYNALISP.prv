@@ -4,7 +4,9 @@
 	 (:separate-namespace)
 	 (:protected . T)
 	 (:load-file-list
+	   (:prj "lsp-annotation-tools/lsp-annotation-tools.prj")
 	   (:prj "lsp-drawing-tools/lsp-drawing-tools.prj")
+	   (:prj "lsp-setup-tools/lsp-setup-tools.prj")
 	   (:prj "lsp-layer-tools/laytransf/laytransf.prj")
 	   (:prj "lsp-layer-tools/layadd/layadd.prj")
 	   (:prj "lsp-layer-tools/layfilter/layfilter.prj")
