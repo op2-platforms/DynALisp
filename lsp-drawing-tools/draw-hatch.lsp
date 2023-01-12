@@ -111,7 +111,7 @@
     ;isan = is annotative? (1 = yes, 0 = no)
     (setq hname   "WOOD_1"
           scale-i "0.75"
-          scale-m "19.05"
+          scale-m "7.5"
           angl    "0"
           hkey    "HATCH"
           lkey    "MED"
@@ -227,8 +227,8 @@
     ;key = layer key available in drawing file
     ;isan = is annotative? (1 = yes, 0 = no)
     (setq hname   "SITEWORK_ASPHALT"
-          scale-i "24.0"
-          scale-m "609.6"
+          scale-i "1"
+          scale-m "25.4"
           angl    "90"
           hkey    "HATCH"
           lkey    "MED"
@@ -244,7 +244,7 @@
           scale-m "2.54"
           angl    "0"
           hkey    "HATCH"
-          lkey    "XLINE"
+          lkey    "FINE"
           isan    1
     )
     (draw-hatch hname scale-i scale-m angl hkey lkey isan)
@@ -254,10 +254,36 @@
     ;isan = is annotative? (1 = yes, 0 = no)
     (setq hname   "ANSI32"
           scale-i "1.0"
-          scale-m "1.0"
+          scale-m "0.5"
           angl    "0.0"
           hkey    "HATCH"
           lkey    "MED"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-demo (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI31"
+          scale-i "0.5"
+          scale-m "0.5"
+          angl    "90.0"
+          hkey    "HATCH"
+          lkey    "THIN"
+          isan    1
+    )
+    (draw-hatch hname scale-i scale-m angl hkey lkey isan)
+)
+(defun c:ha-exst (/ hname scale-i scale-m angl hkey lkey isan) 
+    ;key = layer key available in drawing file
+    ;isan = is annotative? (1 = yes, 0 = no)
+    (setq hname   "ANSI31"
+          scale-i "1.0"
+          scale-m "1.0"
+          angl    "90.0"
+          hkey    "HATCH"
+          lkey    "XLINE"
           isan    1
     )
     (draw-hatch hname scale-i scale-m angl hkey lkey isan)
